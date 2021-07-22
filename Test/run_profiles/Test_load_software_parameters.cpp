@@ -122,3 +122,13 @@ TEST_F(LoadSoftwareParameters_fixture, VerifyInvalidValue_ExpectSuccess)
     // Verify expected 0 for invalid value
     EXPECT_EQ(BRAKING_CHECK_RMS_TIMEOUT, 0);
 }
+
+TEST_F(LoadSoftwareParameters_fixture, VerifyInvalidFormat_ExpectFailure)
+{
+    int status = loadParameters(executable_path, (char*)"../Test/run_profiles/Test_profiles/invalid_format_profile.txt");
+
+    // Verify failure status
+    EXPECT_EQ(status, 1);
+
+    // All other values would be garbage
+}
